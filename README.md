@@ -1,4 +1,4 @@
-# 01
+# Sprint 08 | Angular Plugins & API en Node.js + MySQL
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
 
