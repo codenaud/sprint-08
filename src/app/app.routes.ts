@@ -7,7 +7,7 @@ import { UserComponent } from './pages/user/user.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'crud', component: UserComponent },
   { path: 'map', component: MapComponent },
   { path: 'graphics', component: GraphicsComponent },
   { path: 'fullcalendar', component: FullcalendarComponent },
