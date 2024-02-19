@@ -1,15 +1,32 @@
-<c-carousel>
-  <c-carousel-inner>
-    <c-carousel-item *ngFor="let slide of slides">
+<!-- Youtube tutorial => https://youtu.be/zVjAA6UxvtU?si=rG4UaibWOMs_0jV5 -->
+<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active c-item" *ngFor="let slide of slides; let i = index" [class.active]="i === 0">
       <a [routerLink]="slide.link">
-        <img alt="{{slide.title}}" class="d-block w-100" loading="lazy" src="{{slide.src}}" />
-        <c-carousel-caption class="d-none d-md-block">
-          <h3>{{slide.title}}</h3>
-          <p>{{slide.subtitle}}</p>
-        </c-carousel-caption>
+        <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?fit=crop&w=1964&q=100"
+          class="d-block w-100 c-img" alt="Slide 1">
+        <div class="carousel-caption">
+          <p class="mt-5 fs-3 text-uppercase">{{slide.subtitle}}</p>
+          <h1 class="display-1 fw-bolder text-capitalize">{{slide.title}}</h1>
+          <button class="btn btn-primary px-4 py-2 fs-5 mt-5">More info</button>
+        </div>
       </a>
-    </c-carousel-item>
-  </c-carousel-inner>
-  <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-  <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
-</c-carousel>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

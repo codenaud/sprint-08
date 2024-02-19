@@ -1,2 +1,17 @@
-// En styles.scss o en el archivo SCSS específico
-@import "../../../../../node_modules/@coreui/coreui/dist/css/coreui.min.css";
+.c-item {
+  height: 100vh;
+}
+
+.c-img {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.carousel-caption {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
