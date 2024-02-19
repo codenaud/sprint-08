@@ -47,7 +47,7 @@ export class SliderComponent implements OnInit {
       src: '../../assets/img/chartjs.jpg',
       title: 'Charts JS',
       subtitle: 'Shows 2 types of graphs.',
-      link: '/graphics',
+      link: '/charts',
     };
   }
 }

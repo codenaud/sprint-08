@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-charts',
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.scss',
+  templateUrl: './charts.component.html',
+  styleUrl: './charts.component.scss',
 })
-export class UserComponent {}
+export class ChartsComponent {}
