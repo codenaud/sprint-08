@@ -50,13 +50,40 @@ export class UserAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addUser() {
+    //* Validación del formulario
     this.submitted = true; // Cambia el estado de submitted a true cuando el formulario se envía
 
     if (this.addUserForm.invalid) {
       return; // Si el formulario es inválido, no procedas más
     }
 
-    console.log('Add User', this.addUserForm.value);
-    // Aquí iría la lógica para procesar los datos del formulario, como enviarlos a un servidor
+    //? => Crear la constante para el Backend (extraemos los datos de la interfaz)
+    const user: User = {
+      // opcional
+      name: this.addUserForm.value.name,
+      lastName: this.addUserForm.value.lastName,
+      email: this.addUserForm.value.email,
+      phone: this.addUserForm.value.phone,
+      location: this.addUserForm.value.location,
+      hobby: this.addUserForm.value.hobby,
+    };
+    //? Validamos que estamos capturando los datos correctamente
+    console.log(`formulario capturado de: ${{ user }}`); // => [object Object]
+    console.log('Formulario capturado de con símbolo +:' + user); // => [object Object]
+    console.log(`formulario capturado de con JSON: ${JSON.stringify(user)}`);
+    console.log(user);
+
+    //* Información del formulario
+    console.log('Add User Form');
+
+    //* todo el formulario
+    console.log(this.addUserForm.value);
+
+    //* formas de obtener valores de los campos del formulario
+    console.log(this.addUserForm.value.name, this.addUserForm.value.lastName);
+    console.log(
+      this.addUserForm.get('name')?.value,
+      this.addUserForm.get('lastName')?.value
+    );
   }
 }
