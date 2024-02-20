@@ -17,6 +17,22 @@ export class HeroService {
 
   // Otros héroes pueden ser definidos aquí
 
+  addUserHero: Hero = {
+    id: 0,
+    src: '../../assets/img/crud.jpg',
+    title: 'Add User',
+    subtitle: 'Add a User to consume data from the API',
+    link: '',
+  };
+
+  editUserHero: Hero = {
+    id: 0,
+    src: '../../assets/img/crud.jpg',
+    title: 'Edit User',
+    subtitle: 'Edit User to consume data from the API',
+    link: '',
+  };
+
   mapBoxHero: Hero = {
     id: 1,
     src: '../../assets/img/mapbox.jpg',
@@ -45,6 +61,13 @@ export class HeroService {
   getCrudHero(): Hero {
     return this.crudHero;
   }
+  getAddUserHero(): Hero {
+    return this.addUserHero;
+  }
+  getEditUserHero(): Hero {
+    return this.editUserHero;
+  }
+
   getMapBoxHero(): Hero {
     return this.mapBoxHero;
   }

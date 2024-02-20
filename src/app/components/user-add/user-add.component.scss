@@ -1,0 +1,14 @@
+.body-container {
+  width: 100%;
+}
+.btn-crud {
+  color: #fff;
+
+  background-color: #a685e6;
+  border-color: #a685e6;
+  &:hover {
+    // Corrección aquí
+    background-color: #50318e;
+    border-color: #50318e;
+  }
+}

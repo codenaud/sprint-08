@@ -1,1 +1,101 @@
-<p>user-add works!</p>
+<!-- nav -->
+<app-header />
+<app-hero [hero]="addUserHero"></app-hero>
+<div class="container pt-5">
+  <div class="header-container d-flex justify-content-between align-items-center p-3 ">
+    <div class="header-title">
+      <h2>Add User Section</h2>
+    </div>
+    <div class="header-btn">
+      <button class="btn btn-crud" type="submit" [routerLink]="['/crud']" routerLinkActive="router-link-active">Go
+        Back</button>
+    </div>
+  </div>
+  <div class="body-container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add User</h5>
+      </div>
+      <div class="card-form px-3">
+        <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+          <div class="form-floating mb-3">
+            <input formControlName="name" type="text" class="form-control" id="floatingName" placeholder="Name"
+              [class.is-invalid]="addUserForm.controls['name'].errors && submitted"
+              [class.is-valid]="addUserForm.controls['name'].valid && (addUserForm.controls['name'].touched || submitted)">
+            <label for="floatingName">Name</label>
+            <!-- Mensajes de error -->
+            <div *ngIf="addUserForm.controls['name'].errors && submitted" class="invalid-feedback">
+              <div *ngIf="addUserForm.controls['name'].getError('required')">
+                - This field is required
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input formControlName="lastName" type="text" class="form-control" id="floatingLastName"
+              placeholder="LastName" [class.is-invalid]="addUserForm.controls['lastName'].errors && submitted"
+              [class.is-valid]="addUserForm.controls['lastName'].valid && (addUserForm.controls['lastName'].touched || submitted)">
+            <label for="floatingLastName">LastName</label>
+            <!-- Mensajes de error -->
+            <div *ngIf="addUserForm.controls['lastName'].errors && submitted" class="invalid-feedback">
+              <div *ngIf="addUserForm.controls['lastName'].getError('required')">
+                - This field is required
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input formControlName="email" type="email" class="form-control" id="floatingEmail"
+              placeholder="name@example.com" [class.is-invalid]="addUserForm.controls['email'].errors && submitted"
+              [class.is-valid]="addUserForm.controls['email'].valid && (addUserForm.controls['email'].touched || submitted)">
+            <label for="floatingEmail">Email address</label>
+            <!-- Mensajes de error -->
+            <div *ngIf="addUserForm.controls['email'].errors && submitted" class="invalid-feedback">
+              <div *ngIf="addUserForm.controls['email'].getError('required')">
+                - This field is required
+              </div>
+              <div *ngIf="addUserForm.controls['email'].getError('email')">
+                - This is not a valid email
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input formControlName="phone" type="number" class="form-control" id="floatingPhone" placeholder="600100600"
+              [class.is-invalid]="addUserForm.controls['phone'].errors && submitted"
+              [class.is-valid]="addUserForm.controls['phone'].valid && (addUserForm.controls['phone'].touched || submitted)">
+            <label for="floatingPhone">Phone</label>
+            <!-- Mensajes de error -->
+            <div *ngIf="addUserForm.controls['phone'].errors && submitted" class="invalid-feedback">
+              <div *ngIf="addUserForm.controls['phone'].getError('required')">
+                - This field is required
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input formControlName="location" type="text" class="form-control" id="floatingLocation"
+              placeholder="Portland" [class.is-invalid]="addUserForm.controls['location'].errors && submitted"
+              [class.is-valid]="addUserForm.controls['location'].valid && (addUserForm.controls['location'].touched || submitted)">
+            <label for="floatingLocation">Location</label>
+            <!-- Mensajes de error -->
+            <div *ngIf="addUserForm.controls['location'].errors && submitted" class="invalid-feedback">
+              <div *ngIf="addUserForm.controls['location'].getError('required')">
+                - This field is required
+              </div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input formControlName="hobby" type="text" class="form-control" id="floatingHobby" placeholder="Photography"
+              [class.is-invalid]="addUserForm.controls['hobby'].errors && submitted"
+              [class.is-valid]="addUserForm.controls['hobby'].valid && (addUserForm.controls['hobby'].touched || submitted)">
+            <label for="floatingHobby">Hobby</label>
+            <!-- Mensajes de error -->
+            <div *ngIf="addUserForm.controls['hobby'].errors && submitted" class="invalid-feedback">
+              <div *ngIf="addUserForm.controls['hobby'].getError('required')">
+                - This field is required
+              </div>
+            </div>
+          </div>
+          <!-- <button [disabled]="addUserForm.invalid" type="submit" class="btn btn-success mb-3">Add</button> -->
+          <button type="submit" class="btn btn-success mb-3">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>

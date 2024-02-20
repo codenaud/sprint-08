@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
       email: 'mark.otto@demo.com',
       phone: 609123123,
       location: 'Portland, Oregon',
-      hobby: 'Photograpgy',
+      hobby: 'Photography',
     },
     {
       name: 'Jacob',
@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
       email: 'jacob.thomson@demo.com',
       phone: 609234234,
       location: 'Portland, Oregon',
-      hobby: 'Photograpgy',
+      hobby: 'Photography',
     },
     {
       name: 'Larry',
@@ -34,7 +34,7 @@ export class UserListComponent implements OnInit {
       email: 'larry.bird@demo.com',
       phone: 609345345,
       location: 'Portland, Oregon',
-      hobby: 'Photograpgy',
+      hobby: 'Photography',
     },
   ];
   constructor() {}
