@@ -1,0 +1,15 @@
+.cst-rounded {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.btn-crud {
+  color: #fff;
+
+  background-color: #a685e6;
+  border-color: #a685e6;
+  &:hover {
+    // Corrección aquí
+    background-color: #50318e;
+    border-color: #50318e;
+  }
+}
