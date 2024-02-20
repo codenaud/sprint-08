@@ -11,12 +11,11 @@
   <div class="carousel-inner">
     <div class="carousel-item active c-item" *ngFor="let slide of slides; let i = index" [class.active]="i === 0">
       <a [routerLink]="slide.link">
-        <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?fit=crop&w=1964&q=100"
-          class="d-block w-100 c-img" alt="Slide 1">
+        <img src="{{slide.src}}" class="d-block w-100 c-img" alt="Slide 1">
         <div class="carousel-caption">
           <p class="mt-5 fs-3 text-uppercase">{{slide.subtitle}}</p>
           <h1 class="display-1 fw-bolder text-capitalize">{{slide.title}}</h1>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5">More info</button>
+          <button class="btn btn-ios px-4 py-2 fs-5 mt-5">More info</button>
         </div>
       </a>
     </div>
