@@ -39,5 +39,11 @@ export class UserListComponent implements OnInit {
   ];
   constructor() {}
 
-  ngOnInit(): void {}
+  // ID Dinámico
+  ngOnInit(): void {
+    this.userList = this.userList.map((user, index) => ({
+      ...user,
+      id: index + 1, // Asignar un ID dinámico basado en el índice
+    }));
+  }
 }

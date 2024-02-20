@@ -1,7 +1,3 @@
-.cst-rounded {
-  border-radius: 10px;
-  overflow: hidden;
-}
 .btn-crud {
   color: #fff;
 
@@ -11,5 +7,21 @@
     // Corrección aquí
     background-color: #50318e;
     border-color: #50318e;
+  }
+}
+.table-container {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -0.75rem 0;
+  border: solid #dee2e6;
+  border-width: 1px 0 0;
+}
+@media (min-width: 576px) {
+  .table-container {
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
   }
 }
