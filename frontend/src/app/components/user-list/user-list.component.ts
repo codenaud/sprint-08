@@ -1,7 +1,9 @@
+// user-list.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { User } from '../../interfaces/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -37,13 +39,15 @@ export class UserListComponent implements OnInit {
       hobby: 'Travel',
     },
   ];
-  constructor() {}
+  constructor(private _userService: UserService) {}
 
-  // ID Dinámico
   ngOnInit(): void {
-    this.userList = this.userList.map((user, index) => ({
-      ...user,
-      id: index + 1, // Asignar un ID dinámico basado en el índice
-    }));
+    this.getListUsers();
+  }
+
+  getListUsers() {
+    this._userService.getListUsers().subscribe((data) => {
+      console.log(data);
+    });
   }
 }
