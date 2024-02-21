@@ -25,16 +25,16 @@ export class UserListComponent implements OnInit {
       lastName: 'Thomson',
       email: 'jacob.thomson@demo.com',
       phone: 609234234,
-      location: 'Portland, Oregon',
-      hobby: 'Photography',
+      location: 'Chicago , Illinois',
+      hobby: 'Music',
     },
     {
       name: 'Larry',
       lastName: 'Bird',
       email: 'larry.bird@demo.com',
       phone: 609345345,
-      location: 'Portland, Oregon',
-      hobby: 'Photography',
+      location: 'Los Ángeles, California',
+      hobby: 'Travel',
     },
   ];
   constructor() {}
