@@ -38,6 +38,9 @@ export class UserListComponent implements OnInit {
     });
   }
   deleteUser(id: number) {
-    console.log(id);
+    this.loading = true;
+    this._userService.deleteUser(id).subscribe(() => {
+      this.getListUsers();
+    });
   }
 }

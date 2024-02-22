@@ -21,6 +21,10 @@ export class UserService {
     console.log(this.myApiUrl);
     return this.http.get<User[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
+  deleteUser(id: number): Observable<void> {
+    console.log(this.myApiUrl);
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
 }
 
 /**
