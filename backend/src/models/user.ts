@@ -23,6 +23,9 @@ const User = db.define(
     hobby: {
       type: DataTypes.STRING,
     },
+  },
+  {
+    tableName: 'users',
   }
   /* {
     createdAt: false,

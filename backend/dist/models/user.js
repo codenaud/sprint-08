@@ -25,6 +25,8 @@ const User = connection_1.default.define('User', {
     hobby: {
         type: sequelize_1.DataTypes.STRING,
     },
+}, {
+    tableName: 'users',
 }
 /* {
   createdAt: false,
