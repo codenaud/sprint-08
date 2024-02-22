@@ -13,11 +13,12 @@ export class UserService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) {
-    // this.myAppUrl = environment.endpoint; // ! error insalvable
-    this.myAppUrl = 'http://localhost:3000/';
+    this.myAppUrl = environment.endpoint; //** va a endpoint de enviroment.development */
+    // this.myAppUrl = 'http://localhost:3000/';
     this.myApiUrl = 'api/users/';
   }
   getListUsers(): Observable<User[]> {
+    console.log(this.myApiUrl);
     return this.http.get<User[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 }
