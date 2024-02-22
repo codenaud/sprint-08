@@ -1,5 +1,5 @@
 <app-progress-bar *ngIf="loading" />
-<div *ngIf="!loading" class="container pt-5">
+<div *ngIf="!loading" class="container p-5">
   <div class="header-container d-flex justify-content-between align-items-center p-3 ">
     <div class="header-title">
       <h2> Crud Database</h2>
@@ -14,7 +14,7 @@
     <div class="table-container mx-3">
       <div class="table-responsive">
         <table class="table">
-          <thead class="table-dark">
+          <thead *ngIf="userList.length > 0" class="table-dark">
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
@@ -39,6 +39,7 @@
             </tr>
           </tbody>
         </table>
+        <h5 *ngIf="userList.length == 0">No hay Usuarios para mostrar</h5>
       </div>
     </div>
   </div>

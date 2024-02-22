@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { HeroComponent } from '../../shared/components/hero/hero.component';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../services/hero.service';
 import {
@@ -12,6 +12,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { User } from '../../interfaces/user';
+import { UserService } from '../../services/user.service';
+import { ProgressBarComponent } from '../../shared/components/progress-bar/progress-bar.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-add',
@@ -25,16 +28,24 @@ import { User } from '../../interfaces/user';
     HeaderComponent,
     HeroComponent,
     ReactiveFormsModule,
+    ProgressBarComponent,
   ],
 })
 export class UserAddComponent implements OnInit {
   addUserHero: Hero;
   addUserForm: FormGroup;
+  loading: boolean = false;
 
   // validación formularios
   submitted = false;
 
-  constructor(private heroService: HeroService, private fb: FormBuilder) {
+  constructor(
+    private heroService: HeroService,
+    private fb: FormBuilder,
+    private _userService: UserService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     // Inicializar para evitar errores de TypeScript
     this.addUserHero = this.heroService.getAddUserHero();
     this.addUserForm = this.fb.group({
@@ -67,6 +78,17 @@ export class UserAddComponent implements OnInit {
       location: this.addUserForm.value.location,
       hobby: this.addUserForm.value.hobby,
     };
+
+    this.loading = true;
+    this._userService.saveUser(user).subscribe(() => {
+      console.log('Producto Agregado');
+      this.loading = false;
+      this.toastr.success(
+        `El usuario ${user.name} fue registrado con éxito`,
+        'Usuario registrado'
+      );
+      this.router.navigate(['/crud']);
+    });
     //? Validamos que estamos capturando los datos correctamente
     console.log(`formulario capturado de: ${{ user }}`); // => [object Object]
     console.log('Formulario capturado de con símbolo +:' + user); // => [object Object]

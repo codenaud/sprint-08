@@ -25,6 +25,9 @@ export class UserService {
     console.log(this.myApiUrl);
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }
+  saveUser(user: User): Observable<void> {
+    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, user);
+  }
 }
 
 /**

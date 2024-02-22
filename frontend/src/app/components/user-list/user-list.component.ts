@@ -5,7 +5,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { ProgressBarComponent } from '../../shared/components/progress-bar/progress-bar.component';
-import { deleteUser } from '../../../../../backend/src/controllers/user.controller';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -18,7 +18,10 @@ export class UserListComponent implements OnInit {
   userList: User[] = [];
   loading: boolean = false;
 
-  constructor(private _userService: UserService) {}
+  constructor(
+    private _userService: UserService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getListUsers();
@@ -27,6 +30,11 @@ export class UserListComponent implements OnInit {
   trackById(index: number, user: User) {
     return user.id;
   }
+
+  /*ejemplo crear método toast
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }*/
 
   getListUsers() {
     this.loading = true;
@@ -41,6 +49,10 @@ export class UserListComponent implements OnInit {
     this.loading = true;
     this._userService.deleteUser(id).subscribe(() => {
       this.getListUsers();
+      this.toastr.warning(
+        'El producto fue eliminado con éxito',
+        'Producto eliminado'
+      );
     });
   }
 }
