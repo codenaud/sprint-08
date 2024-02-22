@@ -25,10 +25,12 @@ const User = connection_1.default.define('User', {
     hobby: {
         type: sequelize_1.DataTypes.STRING,
     },
-}, {
-    createdAt: false,
-    updatedAt: false,
-});
+}
+/* {
+  createdAt: false,
+  updatedAt: false,
+} */
+);
 exports.default = User;
 /** pruebas método postUser
 {

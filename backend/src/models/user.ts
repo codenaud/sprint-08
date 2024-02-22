@@ -23,11 +23,11 @@ const User = db.define(
     hobby: {
       type: DataTypes.STRING,
     },
-  },
-  {
+  }
+  /* {
     createdAt: false,
     updatedAt: false,
-  }
+  } */
 );
 
 export default User;
