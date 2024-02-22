@@ -23,10 +23,10 @@ const User = db.define(
     hobby: {
       type: DataTypes.STRING,
     },
-  },
-  {
-    tableName: 'users',
   }
+  /* {
+    tableName: 'users',
+  } */
   /* {
     createdAt: false,
     updatedAt: false,

@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import User from '../models/user';
 
 export const getUsers = async (req: Request, res: Response) => {
-  const listUsers = await User.findAll();
-  res.json({ listUsers });
+  const users = await User.findAll();
+  res.json(users); // Envía directamente el arreglo de usuarios
 };
 
 export const getUser = async (req: Request, res: Response) => {

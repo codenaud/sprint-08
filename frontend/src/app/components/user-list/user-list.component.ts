@@ -13,41 +13,22 @@ import { UserService } from '../../services/user.service';
   styleUrl: './user-list.component.scss',
 })
 export class UserListComponent implements OnInit {
-  userList: User[] = [
-    {
-      name: 'Mark',
-      lastName: 'Otto',
-      email: 'mark.otto@demo.com',
-      phone: 609123123,
-      location: 'Portland, Oregon',
-      hobby: 'Photography',
-    },
-    {
-      name: 'Jacob',
-      lastName: 'Thomson',
-      email: 'jacob.thomson@demo.com',
-      phone: 609234234,
-      location: 'Chicago , Illinois',
-      hobby: 'Music',
-    },
-    {
-      name: 'Larry',
-      lastName: 'Bird',
-      email: 'larry.bird@demo.com',
-      phone: 609345345,
-      location: 'Los Ángeles, California',
-      hobby: 'Travel',
-    },
-  ];
+  userList: User[] = [];
   constructor(private _userService: UserService) {}
 
   ngOnInit(): void {
     this.getListUsers();
   }
 
+  trackById(index: number, user: User) {
+    return user.id;
+  }
+
   getListUsers() {
-    this._userService.getListUsers().subscribe((data) => {
-      console.log(data);
+    this._userService.getListUsers().subscribe((users: User[]) => {
+      console.log(users); // Ver los datos recibidos
+      console.log(Array.isArray(users)); // Debería ser true
+      this.userList = users;
     });
   }
 }
