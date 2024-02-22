@@ -16,6 +16,16 @@
   border: solid #dee2e6;
   border-width: 1px 0 0;
 }
+.table {
+  font-size: 14px;
+}
+th {
+  font-weight: 400;
+}
+.btn-info,
+.btn-danger {
+  font-size: 14px;
+}
 @media (min-width: 576px) {
   .table-container {
     margin-right: 0;
