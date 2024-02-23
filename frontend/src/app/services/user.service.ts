@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { environment } from '../../environments/environment';
+import { updateUser } from '../../../../backend/src/controllers/user.controller';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,12 @@ export class UserService {
   }
   saveUser(user: User): Observable<void> {
     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, user);
+  }
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
+  updateUser(id: number, user: User): Observable<void> {
+    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, user);
   }
 }
 

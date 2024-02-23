@@ -20,6 +20,7 @@ import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { ProgressBarComponent } from '../../shared/components/progress-bar/progress-bar.component';
 import { ToastrService } from 'ngx-toastr';
+import { getUser } from '../../../../../backend/src/controllers/user.controller';
 
 @Component({
   selector: 'app-user-add',
@@ -69,17 +70,36 @@ export class UserAddComponent implements OnInit {
       hobby: ['', [Validators.required]],
     });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
+    console.log(aRouter.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
     if (this.id !== 0) {
       // es EDIT
       this.operation = 'Edit ';
-      this.currentHero = this.editUserHero; // Usar el Hero para editar
+      this.currentHero = this.editUserHero;
+      this.getUser(this.id); // Usar el Hero para editar
     } else {
       // es ADD
       this.currentHero = this.addUserHero; // Usar el Hero para agregar
     }
+  }
+
+  getUser(id: number) {
+    this.loading = true;
+    this._userService.getUser(id).subscribe((user: User) => {
+      // Cambia users: User[] a user: User
+      console.log(user); // Ver los datos recibidos
+      this.loading = false;
+      this.addUserForm.setValue({
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        location: user.location,
+        hobby: user.hobby,
+      });
+    });
   }
 
   addUser() {
@@ -100,34 +120,49 @@ export class UserAddComponent implements OnInit {
       location: this.addUserForm.value.location,
       hobby: this.addUserForm.value.hobby,
     };
-
     this.loading = true;
-    this._userService.saveUser(user).subscribe(() => {
-      console.log('Producto Agregado');
-      this.loading = false;
-      this.toastr.success(
-        `El usuario ${user.name} fue registrado con éxito`,
-        'Usuario registrado'
+
+    if (this.id !== 0) {
+      //es EDIT
+
+      user.id = this.id;
+      this._userService.updateUser(this.id, user).subscribe(() => {
+        console.log('Producto Actualizado');
+        this.toastr.info(
+          `El usuario ${user.name} fue actualizado con éxito`,
+          'Usuario actualizado'
+        );
+        this.loading = false;
+        this.router.navigate(['/crud']);
+      });
+    } else {
+      this._userService.saveUser(user).subscribe(() => {
+        console.log('Producto Agregado');
+        this.toastr.success(
+          `El usuario ${user.name} fue registrado con éxito`,
+          'Usuario registrado'
+        );
+        this.loading = false;
+        this.router.navigate(['/crud']);
+      });
+      //? Validamos que estamos capturando los datos correctamente
+      console.log(`formulario capturado de: ${{ user }}`); // => [object Object]
+      console.log('Formulario capturado de con símbolo +:' + user); // => [object Object]
+      console.log(`formulario capturado de con JSON: ${JSON.stringify(user)}`);
+      console.log(user);
+
+      //* Información del formulario
+      console.log('Add User Form');
+
+      //* todo el formulario
+      console.log(this.addUserForm.value);
+
+      //* formas de obtener valores de los campos del formulario
+      console.log(this.addUserForm.value.name, this.addUserForm.value.lastName);
+      console.log(
+        this.addUserForm.get('name')?.value,
+        this.addUserForm.get('lastName')?.value
       );
-      this.router.navigate(['/crud']);
-    });
-    //? Validamos que estamos capturando los datos correctamente
-    console.log(`formulario capturado de: ${{ user }}`); // => [object Object]
-    console.log('Formulario capturado de con símbolo +:' + user); // => [object Object]
-    console.log(`formulario capturado de con JSON: ${JSON.stringify(user)}`);
-    console.log(user);
-
-    //* Información del formulario
-    console.log('Add User Form');
-
-    //* todo el formulario
-    console.log(this.addUserForm.value);
-
-    //* formas de obtener valores de los campos del formulario
-    console.log(this.addUserForm.value.name, this.addUserForm.value.lastName);
-    console.log(
-      this.addUserForm.get('name')?.value,
-      this.addUserForm.get('lastName')?.value
-    );
+    }
   }
 }
