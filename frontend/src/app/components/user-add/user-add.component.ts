@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { HeroComponent } from '../../shared/components/hero/hero.component';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../services/hero.service';
 import {
@@ -33,8 +38,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserAddComponent implements OnInit {
   addUserHero: Hero;
+  editUserHero: Hero; // Asegúrate de tener también el Hero para editar
+  currentHero: Hero; // Este será el que pasemos al componente <app-hero>
   addUserForm: FormGroup;
   loading: boolean = false;
+  id: number;
+  operation: string = 'Add ';
 
   // validación formularios
   submitted = false;
@@ -44,10 +53,13 @@ export class UserAddComponent implements OnInit {
     private fb: FormBuilder,
     private _userService: UserService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private aRouter: ActivatedRoute
   ) {
     // Inicializar para evitar errores de TypeScript
     this.addUserHero = this.heroService.getAddUserHero();
+    this.editUserHero = this.heroService.getEditUserHero();
+    this.currentHero = this.addUserHero; // Asignar un valor inicial
     this.addUserForm = this.fb.group({
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -56,9 +68,19 @@ export class UserAddComponent implements OnInit {
       location: ['', [Validators.required]],
       hobby: ['', [Validators.required]],
     });
+    this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.id !== 0) {
+      // es EDIT
+      this.operation = 'Edit ';
+      this.currentHero = this.editUserHero; // Usar el Hero para editar
+    } else {
+      // es ADD
+      this.currentHero = this.addUserHero; // Usar el Hero para agregar
+    }
+  }
 
   addUser() {
     //* Validación del formulario

@@ -18,8 +18,7 @@ export const routes: Routes = [
 
   // Links => USER
   { path: 'user/add', component: UserAddComponent },
-  { path: 'user/edit/:id', component: UserEditComponent },
-  { path: 'user/delete', component: UserDeleteComponent },
+  { path: 'user/edit/:id', component: UserAddComponent },
 
   // Links => Error 404
   { path: '**', redirectTo: '', pathMatch: 'full' },
