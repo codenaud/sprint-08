@@ -21,8 +21,11 @@ Frontend →
 
 Backend →
 `npm i express dotenv cors sequelize mysql2`
+
 `npm install -g nodemon`
+
 `tsc --watch`
+
 `nodemon dist/index.js`
 
 4. We have user_db on db_import forlder.
