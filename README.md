@@ -17,9 +17,11 @@ To get this project up and running on your local machine, follow these steps:
 3. We have two folders ( backend & frontend ).
 
 Frontend →
+
 `npm install`
 
 Backend →
+
 `npm i express dotenv cors sequelize mysql2`
 
 `npm install -g nodemon`
