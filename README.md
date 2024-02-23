@@ -31,12 +31,17 @@ Backend →
 `nodemon dist/index.js`
 
 4. We have user_db on db_import forlder.
+   
    4.1 - Install Xampp
+   
    4.2 - Start Server
+   
    4.3 - Go to PhpMyAdmin
+   
    4.4 - Import user_db.xml
+   
 
-5. Run Development server
+6. Run Development server
 
 ## Development server
 
