@@ -1,3 +1,4 @@
+// search-bar.component.ts
 import { Component } from '@angular/core';
 import { SearchResultsComponent } from '../search-results/search-results.component';
 
@@ -8,4 +9,8 @@ import { SearchResultsComponent } from '../search-results/search-results.compone
   styleUrl: './search-bar.component.scss',
   imports: [SearchResultsComponent],
 })
-export class SearchBarComponent {}
+export class SearchBarComponent {
+  onQueryChanged(query: string = '') {
+    console.log(query);
+  }
+}
