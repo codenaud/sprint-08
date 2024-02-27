@@ -1,0 +1,8 @@
+<!-- map-screen.component.ts -->
+<!-- {{isUserLocationReady}} -->
+<app-loading *ngIf="!isUserLocationReady; else mapReady" />
+
+<ng-template #mapReady>
+  <app-map-view />
+
+</ng-template>

@@ -5,6 +5,7 @@ import { HeaderComponent } from '../../shared/components/header/header.component
 import { HeroComponent } from '../../shared/components/hero/hero.component';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../services/hero.service';
+import { MapScreenComponent } from './screens/map-screen/map-screen.component';
 @Component({
   selector: 'app-map',
   standalone: true,
@@ -16,6 +17,7 @@ import { HeroService } from '../../services/hero.service';
     RouterLink,
     HeaderComponent,
     HeroComponent,
+    MapScreenComponent,
   ],
 })
 export class MapComponent implements OnInit {

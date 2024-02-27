@@ -31,17 +31,16 @@ Backend →
 `nodemon dist/index.js`
 
 4. We have user_db on db_import forlder.
-   
-   4.1 - Install Xampp
-   
-   4.2 - Start Server
-   
-   4.3 - Go to PhpMyAdmin
-   
-   4.4 - Import user_db.xml
-   
 
-6. Run Development server
+   4.1 - Install Xampp
+
+   4.2 - Start Server
+
+   4.3 - Go to PhpMyAdmin
+
+   4.4 - Import user_db.xml
+
+5. Run Development server
 
 ## Development server
 
@@ -66,3 +65,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Tutorials used
+
+CRUD Angular - Node - Express - TypeScript - Sequelize & MySQL => [CRUD Angular - Node - Express - TypeScript - Sequelize & MySQL](https://youtu.be/INeJQ_5fwYM?si=S505pTOs5CkVgCoX).
+
+Angular con Mapbox [Angular con Mapbox](https://youtu.be/MQ6CYSi_rwU?si=04UWLclg1Ob1W4G9).
+
+Mapbox =>
+
+1.- Create an account and login to get your own access token.
+
+2.- Install mapbox [Install Mapbox](https://docs.mapbox.com/mapbox-gl-js/guides/install)
+
+`npm install --save mapbox-gl`
