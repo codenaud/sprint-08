@@ -10,7 +10,11 @@ import { SearchResultsComponent } from '../search-results/search-results.compone
   imports: [SearchResultsComponent],
 })
 export class SearchBarComponent {
+  private debounceTimer?: NodeJS.Timeout;
   onQueryChanged(query: string = '') {
-    console.log(query);
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(() => {
+      console.log('Mandar este query:', query);
+    }, 350);
   }
 }
