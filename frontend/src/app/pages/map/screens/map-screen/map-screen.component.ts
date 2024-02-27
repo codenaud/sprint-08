@@ -5,6 +5,8 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { PlacesService } from '../../services/places.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { MapViewComponent } from '../../components/map-view/map-view.component';
+import { AngularLogoComponent } from '../../components/angular-logo/angular-logo.component';
+import { BtnMyLocationComponent } from '../../components/btn-my-location/btn-my-location.component';
 
 @Component({
   selector: 'app-map-screen',
@@ -17,6 +19,8 @@ import { MapViewComponent } from '../../components/map-view/map-view.component';
     RouterLink,
     LoadingComponent,
     MapViewComponent,
+    AngularLogoComponent,
+    BtnMyLocationComponent,
   ],
 })
 export class MapScreenComponent {
