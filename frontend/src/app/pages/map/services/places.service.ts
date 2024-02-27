@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,7 +10,7 @@ export class PlacesService {
   get isUserLocationReady(): boolean {
     return !!this.useLocation;
   }
-  constructor() {
+  constructor(private http: HttpClient) {
     this.getUserLocation();
   }
 
@@ -27,5 +28,13 @@ export class PlacesService {
         }
       );
     });
+  }
+
+  getPlacesByQuery(query: string = '') {
+    this.http
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?country=es&proximity=2.192721507759387%2C41.40245852556819&language=es&access_token=pk.eyJ1IjoiY29kZW5hdWQiLCJhIjoiY2x0NGE4aWNtMDEzMjJpbnphMmZnZjdvYSJ9.nHe-zUJKN6TR1ivvvm6VWQ`
+      )
+      .subscribe(console.log);
   }
 }
