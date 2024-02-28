@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Feature, PlacesResponse } from '../interfaces/places';
 import { PlacesApiClient } from '../api/placesApiClients';
+import { MapService } from './map.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,10 @@ export class PlacesService {
   get isUserLocationReady(): boolean {
     return !!this.useLocation;
   }
-  constructor(private placesAPI: PlacesApiClient) {
+  constructor(
+    private placesAPI: PlacesApiClient,
+    private mapService: MapService
+  ) {
     this.getUserLocation();
   }
 
@@ -52,6 +55,8 @@ export class PlacesService {
         /* console.log(resp.features); */
         this.isLoadingPlaces = false;
         this.places = resp.features;
+
+        this.mapService.createMarkersFromPlaces(this.places);
       });
   }
 }
