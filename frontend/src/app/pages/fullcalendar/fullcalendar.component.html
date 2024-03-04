@@ -18,6 +18,7 @@
       </div>
       <div class="modal-body">
         <form>
+
           <div class="form-group">
             <label for="event-title">Título del Evento</label>
             <input type="text" class="form-control" id="event-title" [(ngModel)]="eventTitle" name="eventTitle">
@@ -37,6 +38,14 @@
               <option value="#0B8043">Verde</option>
               <!-- Añade más opciones de color según necesites -->
             </select>
+          </div>
+          <div class="form-group">
+            <label for="event-start">Fecha de inicio</label>
+            <input type="date" class="form-control" id="event-start" [(ngModel)]="eventStart" name="eventStart">
+          </div>
+          <div class="form-group">
+            <label for="event-end">Fecha de fin</label>
+            <input type="date" class="form-control" id="event-end" [(ngModel)]="eventEnd" name="eventEnd">
           </div>
         </form>
       </div>

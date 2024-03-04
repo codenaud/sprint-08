@@ -93,25 +93,17 @@ export class FullcalendarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleDateClick(arg: any) {
-    alert('Date click: ' + arg.dateStr);
-  }
+  handleDateClick(arg: any) {}
 
   handleDateSelect(selectInfo: any) {
-    const title = prompt('Please enter a new title for your event:');
-    let calendarApi = selectInfo.view.calendar;
-
-    calendarApi.unselect(); // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-        description: 'Add a description here', // Placeholder, reemplace o modifique según sea necesario
-      });
-    }
+    this.eventStart = selectInfo.startStr; // Asegúrate de usar startStr y endStr que son formatos de cadena de fecha
+    this.eventEnd = selectInfo.endStr;
+    // Preparar el modal para un nuevo evento
+    this.eventTitle = '';
+    this.eventDescription = '';
+    this.eventColor = ''; // Puedes establecer un color predeterminado si lo deseas
+    // La siguiente línea es donde necesitas corregir la referencia a la función
+    this.openModalWithEventData(); // Llama a openModalWithEventData sin parámetros para un nuevo evento
   }
 
   handleEventClick(clickInfo: any) {
