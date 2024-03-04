@@ -1,7 +1,49 @@
-<!-- nav -->
+<!-- fullcalendar.component.html -->
 <app-header />
 <app-hero [hero]="fullCalendarHero"></app-hero>
+<div class="container my-5">
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
 
-<div class="container">
-  <!-- form -->
+<!-- Modal para añadir/editar evento -->
+<div class="modal fade" id="eventEditModal" tabindex="-1" aria-labelledby="eventEditModalLabel" aria-hidden="true"
+  #eventEditModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventEditModalLabel">Añadir/Editar Evento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="event-title">Título del Evento</label>
+            <input type="text" class="form-control" id="event-title" [(ngModel)]="eventTitle" name="eventTitle">
+          </div>
+          <div class="form-group">
+            <label for="event-description">Descripción</label>
+            <textarea class="form-control" id="event-description" [(ngModel)]="eventDescription"
+              name="eventDescription"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="event-color">Color del Evento</label>
+            <select class="form-control" id="event-color" [(ngModel)]="eventColor" name="eventColor">
+              <option value="">Seleccione un color</option>
+              <option value="#3788D8">Azul</option>
+              <option value="#D83B01">Naranja</option>
+              <option value="#F4B400">Amarillo</option>
+              <option value="#0B8043">Verde</option>
+              <!-- Añade más opciones de color según necesites -->
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="saveEvent()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
 </div>
