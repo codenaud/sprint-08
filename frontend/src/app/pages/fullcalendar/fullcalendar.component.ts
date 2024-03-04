@@ -166,6 +166,14 @@ export class FullcalendarComponent implements OnInit {
     this.closeModal();
   }
 
+  deleteEvent() {
+    if (this.selectedEvent) {
+      this.selectedEvent.remove(); // Elimina el evento seleccionado
+      this.selectedEvent = null; // Resetea la variable del evento seleccionado
+      this.closeModal(); // Cierra el modal
+    }
+  }
+
   closeModal() {
     this.eventEditModal.nativeElement.style.display = 'none';
     this.eventEditModal.nativeElement.classList.remove('show');

@@ -43,6 +43,8 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="saveEvent()">Guardar Cambios</button>
+        <button type="button" class="btn btn-danger" *ngIf="selectedEvent" (click)="deleteEvent()">Eliminar
+          Evento</button>
       </div>
     </div>
   </div>

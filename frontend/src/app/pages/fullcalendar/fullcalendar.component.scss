@@ -5,3 +5,14 @@
   padding: 2px !important;
 }
 */
+button.close {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  /* background-color: #ff000014; */
+}
+
+select.form-control {
+  -webkit-appearance: menulist-button;
+  appearance: menulist-button;
+}
