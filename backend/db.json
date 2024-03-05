@@ -1,0 +1,19 @@
+{
+  "charts": [
+    {
+      "labels": ["January", "February", "March", "April", "May", "June", "July"],
+      "datasets": [
+        {
+          "label": "My First dataset",
+          "data": [65, 60, 80, 82, 55, 55, 40],
+          "backgroundColor": "rgb(66, 145, 245)"
+        },
+        {
+          "label": "My Second dataset",
+          "data": [25, 50, 40, 20, 85, 25, 90],
+          "backgroundColor": "rgb(255, 167, 38)"
+        }
+      ]
+    }
+  ]
+}
