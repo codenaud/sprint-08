@@ -17,7 +17,7 @@
 }
 #active:checked ~ .wrapper {
   clip-path: circle(75%);
-  z-index: 1;
+  z-index: 99;
 }
 .menu-btn {
   position: absolute;
