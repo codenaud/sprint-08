@@ -30,6 +30,8 @@ Backend →
 
 `nodemon dist/index.js`
 
+`json-server --watch db.json --port 4000`
+
 4. We have user_db on db_import forlder.
 
    4.1 - Install Xampp
