@@ -35,8 +35,8 @@ export class FullcalendarComponent implements OnInit {
   eventTitle: string = '';
   eventDescription: string = '';
   eventColor: string = '';
-  eventStart: Date | null = null;
-  eventEnd: Date | null = null;
+  eventStart: string | null = null;
+  eventEnd: string | null = null;
   calendarApi: any;
 
   @ViewChild('eventEditModal', { static: true })
@@ -60,13 +60,20 @@ export class FullcalendarComponent implements OnInit {
     events: [
       {
         title: 'Event 1',
-        date: '2024-04-01',
         description: 'This is a sample description',
+        backgroundColor: '#3788D8',
+        borderColor: '#3788D8',
+        start: '2024-03-24',
+        end: '2024-03-25',
       },
       {
         title: 'Event 2',
-        date: '2024-04-02',
         description: 'Another sample description',
+        backgroundColor: '#D83B01',
+        borderColor: '#D83B01',
+        start: '2024-04-02',
+        // Ajusta la fecha de finalización para incluir el día 4 en la visualización
+        end: '2024-04-05',
       },
     ],
     eventContent: (arg) => {
@@ -116,8 +123,9 @@ export class FullcalendarComponent implements OnInit {
       this.eventTitle = event.title;
       this.eventDescription = event.extendedProps.description || '';
       this.eventColor = event.backgroundColor;
-      this.eventStart = event.start;
-      this.eventEnd = event.end;
+      // Convertir las fechas a formato de cadena YYYY-MM-DD
+      this.eventStart = this.convertDateToInputFormat(event.start);
+      this.eventEnd = this.convertDateToInputFormat(event.end);
     } else {
       // Nuevo evento
       this.selectedEvent = null;
@@ -131,6 +139,15 @@ export class FullcalendarComponent implements OnInit {
     // Mostrar el modal
     this.eventEditModal.nativeElement.style.display = 'block';
     this.eventEditModal.nativeElement.classList.add('show');
+  }
+  convertDateToInputFormat(date: Date | string): string {
+    if (date instanceof Date) {
+      return date.toISOString().split('T')[0];
+    } else {
+      // Si la fecha ya es una cadena, asumir que está en el formato correcto
+      // O puedes ajustar según sea necesario basado en cómo estás manejando las fechas
+      return date;
+    }
   }
 
   saveEvent() {
